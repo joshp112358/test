@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Meta tags for proper rendering and mobile support -->
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  
+  <!-- Page title -->
+  <title>Vali Test</title>
+  
+  <!-- External dependencies -->
+  <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@4.20.0/dist/tf.min.js"></script>
+  
+  <!-- External stylesheet -->
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <!-- Page header with title and description -->
+  <header>
+    <h1>MNIST Live Tester</h1>
+    <p>Draw a single digit (0–9).</p>
+  </header>
+
+  <!-- Main content area -->
+  <main>
+    <div class="grid">
+      <!-- Drawing canvas section -->
+      <section class="card">
+        <div class="canvas-wrap">
+          <!-- Main drawing canvas -->
+          <canvas id="board" width="280" height="280" aria-label="drawing canvas"></canvas>
+          
+          <!-- Control buttons -->
+          <div class="controls">
+            <button id="clearBtn">Clear (<span class="kbd">C</span>)</button>
+            <button id="undoBtn">Undo (<span class="kbd">Z</span>)</button>
+            <button id="predictBtn" class="accent">Predict (<span class="kbd">Enter</span>)</button>
+          </div>
+          
+          <!-- User hint -->
+        </div>
+      </section>
+
+      <!-- Prediction results section -->
+      <section class="card">
+        <!-- Top prediction and preview -->
+        <div class="row" style="align-items:flex-end; gap: 16px;">
+          <div style="flex:1;">
+            <!-- Large prediction display -->
+            <div id="topline" class="topline">–</div>
+            <!-- Model status -->
+            <div id="status" class="status">Model: <span id="modelName">loading…</span></div>
+          </div>
+          
+          <!-- 28x28 preview thumbnail -->
+          <div style="width: 160px;">
+            <canvas id="thumb" width="112" height="112" 
+                    style="border-radius: 12px; border: 1px solid rgba(255,255,255,0.12);"></canvas>
+            <div class="small" style="text-align:center; margin-top: 6px;">28×28 preview</div>
+          </div>
+        </div>
+        
+        <!-- Confidence bars for all digits -->
+        <div id="probs" style="margin-top: 10px; display: grid; gap: 8px;"></div>
+      </section>
+    </div>
+  </main>
+
+  <!-- External JavaScript -->
+  <script src="script.js"></script>
+</body>
+</html>
